@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Главная страница</title>
+  <style>
+      table {
+          border: 1px solid grey;
+          border-collapse: collapse;
+      }
+
+      th {
+          border: 1px solid grey;
+      }
+
+      td {
+          border: 1px solid grey;
+      }
+  </style>
+</head>
+<body>
+<table style="margin-bottom: 50px">
+  <colgroup>
+    <col span="3" style="background:Khaki">
+  </colgroup>
+  <tr>
+    <th>Всего заказов</th>
+    <th>Total, $</th>
+    <th>Total, ₽</th>
+  </tr>
+  <tr>
+    <th> {{ orders.count }}</th>
+    <th> {{ price_sum.total_usd }}</th>
+    <th> {{ price_sum.total_rub }}</th>
+  </tr>
+</table>
+
+<table>
+  <colgroup>
+    <col span="5" style="background:#44c0c0">
+  </colgroup>
+  <tr>
+    <th>№</th>
+    <th>заказ №</th>
+    <th>стоимость,$</th>
+    <th>стоимость,₽</th>
+    <th>срок поставки</th>
+  </tr>
+  {% for order in orders %}
+    <tr>
+      <th>{{ order.first_id }}</th>
+      <th>{{ order.second_id }}</th>
+      <th>{{ order.price_usd }}</th>
+      <th>{{ order.price_rub }}</th>
+      <th>{{ order.date }}</th>
+    </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
